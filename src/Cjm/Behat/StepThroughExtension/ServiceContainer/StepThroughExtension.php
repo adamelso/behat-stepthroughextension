@@ -66,7 +66,9 @@ final class StepThroughExtension implements Extension
     {
         $definition = new Definition(
             'Cjm\Behat\StepThroughExtension\Pauser\CliPauser',
-             array(new Definition('Behat\Behat\Output\Printer\ConsoleOutputPrinter'))
+             array(new Definition('Behat\Testwork\Output\Printer\StreamOutputPrinter', array(
+                 new Definition('Behat\Behat\Output\Printer\ConsoleOutputFactory')
+             )))
         );
         $container->setDefinition(self::PAUSER_ID , $definition);
     }
